@@ -6,7 +6,13 @@ You need to use simple or double dollars inside a Discord inline code (this is t
 
 Examples (just copy-paste)
 - Inline: `` I want to say `$\forall x\in\mathbb{N}, x\ge 0$` ! ``
+- Inline: `` I want to say `\(\forall x\in\mathbb{N}, x\ge 0\)` ! ``
+- Inline: `` I want to say ```$\forall x\in\mathbb{N}, x\ge 0$``` ! ``
+- Inline: `` I want to say ```\(\forall x\in\mathbb{N}, x\ge 0\)``` ! ``
 - Block: `` Voilà: `$$\int_0^\infty e^{-x^2}dx=\frac{\sqrt{\pi}}{2}$$` ``
+- Block: `` Voilà: `\[\int_0^\infty e^{-x^2}dx=\frac{\sqrt{\pi}}{2}\]` ``
+- Block: `` Voilà: ```$$\int_0^\infty e^{-x^2}dx=\frac{\sqrt{\pi}}{2}$$``` ``
+- Block: `` Voilà: ```\[\int_0^\infty e^{-x^2}dx=\frac{\sqrt{\pi}}{2}\]``` ``
 
 # Installation
 You can manually download the plugin here
