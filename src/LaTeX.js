@@ -90,8 +90,9 @@ export default class Plugin {
       const codeText = codeElement.innerHTML;
       const sanitize = x => x.replace('\\unicode', '');
 
-      var findCodeElement = function(codeElement) {
-        var lineblockElem = codeElement.closest("pre"); // ```$$E=mc^2$$``` Support
+      // handles multiline code blocks
+      function findCodeElement(codeElement) {
+        const lineblockElem = codeElement.closest("pre");
         return lineblockElem ? lineblockElem : codeElement;
       };
 

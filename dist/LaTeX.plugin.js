@@ -4,7 +4,7 @@
  * @authorLink https://github.com/BinaryQuantumSoul
  * @source https://github.com/BinaryQuantumSoul/discord-latex
  * @description Renders LaTeX equations using MathJax
- * @version 1.0.4
+ * @version 1.0.5
  */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
@@ -211,8 +211,9 @@ class Plugin {
       const codeText = codeElement.innerHTML;
       const sanitize = x => x.replace('\\unicode', '');
 
-      var findCodeElement = function(codeElement) {
-        var lineblockElem = codeElement.closest("pre"); // ```$$E=mc^2$$``` Support
+      // handles multiline code blocks
+      function findCodeElement(codeElement) {
+        const lineblockElem = codeElement.closest("pre");
         return lineblockElem ? lineblockElem : codeElement;
       };
 
