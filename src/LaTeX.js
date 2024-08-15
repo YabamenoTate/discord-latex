@@ -90,11 +90,20 @@ export default class Plugin {
       const codeText = codeElement.innerHTML;
       const sanitize = x => x.replace('\\unicode', '');
 
-      if (codeText.startsWith("$$") && codeText.endsWith("$$")) {
-        codeElement.outerHTML = "<span>mthjxblock" + sanitize(codeText).slice(2, -2) + "mthjxblockend</span>";
+      // handles multiline code blocks
+      function findCodeElement(codeElement) {
+        const lineblockElem = codeElement.closest("pre");
+        return lineblockElem ? lineblockElem : codeElement;
+      };
+
+      if ((codeText.startsWith("$$") && codeText.endsWith("$$")) || (codeText.startsWith("\\[") && codeText.endsWith("\\]"))) {
+        findCodeElement(codeElement).outerHTML = "<span>mthjxblock" + sanitize(codeText).slice(2, -2) + "mthjxblockend</span>";
         containsTex = true;
       } else if (codeText.startsWith("$") && codeText.endsWith("$")) {
-        codeElement.outerHTML = "<span>mthjxinline" + sanitize(codeText).slice(1, -1) + "mthjxinlineend</span>";
+        findCodeElement(codeElement).outerHTML = "<span>mthjxinline" + sanitize(codeText).slice(1, -1) + "mthjxinlineend</span>";
+        containsTex = true;
+      } else if (codeText.startsWith("\\(") && codeText.endsWith("\\)")) {
+        findCodeElement(codeElement).outerHTML = "<span>mthjxinline" + sanitize(codeText).slice(2, -2) + "mthjxinlineend</span>";
         containsTex = true;
       }
     });
